@@ -1,0 +1,123 @@
+6. 
+What is the octal representation of a file that can be read and written only by its owner?
+-600.
+
+7. 
+In UNIX systems, what is the common name of the special user that can access and modify every file?
+-Superuser.
+
+8. 
+Which file permission classes are available in UNIX systems?
+-Setuid, setgid and sticky bit.
+
+9. 
+As of 2020, which percentage of servers have UNIX-like OS?
+-70,6% servers have UNIX-like OS.
+
+11. 
+$ pwd
+
+12. 
+$ mv text.txt text1.txt
+
+13. 
+$ SCHTASKS /CREATE /SC WEEKLY /D SUN /TN "FOLDERPATH\TASKNAME" /TR "C:\SOURCE\FOLDER\APP-OR-SCRIPT" /ST HH:MM
+
+14. 
+$ sudo kill 123
+
+15. 
+$ su 
+	Password: ********
+	
+$ su - {user-name}
+	Password: ********
+
+16. 
+30 0 * * 6
+
+17. 
+30 0 15 * *
+
+18. 
+30 5 * Jun 7/1
+
+19. 
+#!/bin/bash
+read -p "Please enter name: " name
+echo "Your name: "  $name  "  Date: " $(date)
+
+20. 
+read -p "First number: " num1
+read -p "Second number: " num2
+echo "Total: " $((num1+num2))
+
+21. 
+echo "What is your name? "
+read MY_NAME
+echo  "$MY_NAME stored"
+
+22. 
+#!/bin/bash
+Kalkun=$(hostname)
+echo "This script is running on" $Kalkun 
+
+23. 
+kalkun=$(pwd)
+echo $kalkun
+
+24. 
+            First we create a sample.txt document (name is optional)
+            now lets create crontask.sh       
+                
+                        #!/bin/bash
+                        echo "Task scheduled at:" $(date) 
+
+			crondate=$(date +%d%m%y%h%m)
+                        enddate= 271120202359
+                        if [ $(crondate) -gt $(enddate) ]
+                        then $(service crond stop)
+                        fi
+                
+           Now lets create a cronjob: Type crontab -e
+            to set a time for the cronjob we will have to set it up with 5 different variables
+                   Minute (0 - 59)
+                   Hour (0 - 23)
+                   Day of the month (1 - 31)
+                   Month (1 - 12)
+                   Day of the week (0 - 6( Sunday to saturday; 7 is also on Sunday on some systems))
+            Now lets enter our file path for out script exectution and our .txt document
+		/home/user/crontask.sh >> /home/user/sample.txt
+            The full code should look something like this
+		 */30 * * * *    /home/user/crontask.sh >> /home/user/sample.txt
+            now type "cat sample.txt" and see the results
+
+25. 
+#!/bin/bash
+
+echo "How old am i? Press 1 for answer "
+echo "What was my first coding language? Press 2 for answer "
+echo "What games do i like to play? Press 3 for answer "
+
+read -p "pleas enter number here?" number
+while true; do
+if [ $number -eq 1 ] 
+then
+	echo "21 years old"
+elif [ $number -eq 2 ] 
+then 
+	echo "Java"
+elif [ $number -eq 3 ] 
+then 
+	echo "Path of exile"
+elif [ $number -eq q ]
+then $kill
+else
+	echo "How old am i? Press 1 for answer"
+	echo "What was my first coding language? Press 2 for answer"
+	echo "what games do i like to play? Press 3 for answer"
+	read -p "pleas enter number here?" number
+	continue
+fi
+break
+done

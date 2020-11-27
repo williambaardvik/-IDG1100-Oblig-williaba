@@ -1,0 +1,12 @@
+Section 1 - OS, Kernel, Shell
+1. What components are part of the Von Neuman Architecture?
+-A central processing unit (CPU), memory, and input/output (I/O) interfaces.
+2. What is user space?
+-User space is system memory allocated to running applications. 
+It is often contrasted with kernel space, which is memory allocated to the kernel and the operating system.
+3. What is the shell?
+-In computing, a shell is a computer program which exposes an operating system's services to a human user or other program.
+4. Where is the shell located?
+-The shell is located on the application layer. This is one of the seven layers of the OSI model.
+5. What is the main task of the shell?
+-The shell is responsible for the execution of all programs that you request from your terminal.

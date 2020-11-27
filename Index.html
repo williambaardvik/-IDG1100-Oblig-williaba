@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        p{
+            text-indent: 2em;
+        }
+        .sectionI{
+            text-align: left;
+            margin: 5%;
+            padding: 3em;
+            background-color: cyan;
+            border-radius: 1.5em;
+ 
+        }
+        .sectionII{
+            text-align: left;
+            margin: 5%;
+            padding: 3em;      
+            background-color: cyan;
+            border-radius: 1.5em;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>IDG1100 OBLIG</h1>
+<div class="sectionI">
+    <h2>Section I</h2>
+    <h3>What components are part of the Von Neuman Architecture?</h3>
+        <p>A central processing unit (CPU), memory, and input/output (I/O) interfaces.</p>
+    <h3>What is user space?</h3>
+        <p>User space is system memory allocated to running applications.</p>
+    <h3>What is the shell?</h3>
+        <p>In computing, a shell is a computer program which exposes an operating system's services to a human user or other program.</p>
+    <h3>Where is the shell located?</h3>
+        <p>The shell is located on the application layer. This is one of the seven layers of the OSI model</p>
+    <h3>What is the main task of the shell?</h3>
+        <p>The shell is responsible for the execution of all programs that you request from your terminal.</p>
+</div>
+<div class="sectionII">
+    <h2>Section II</h2>
+    <h3>What is the octal representation of a file that can be read and written only by its owner?</h3>
+        <p>600</p>
+    <h3>In UNIX systems, what is the common name of the special user that can access and modify every file?</h3>
+        <p>Superuser</p>
+    <h3>Which file permission classes are available in UNIX systems?</h3>
+        <p>Setuid, setgid and sticky bit</p>
+    <h3>As of 2020, which percentage of servers have UNIX-like OS?</h3>
+        <p>70,6% servers have UNIX-like OS</p>
+    <h3>The Command ssh Will</h3>
+    <h3>UNIX Command: access you current working directory</h3>
+        <code>$ pwd</code>
+    <h3>UNIX Command: rename files (give an example)</h3>
+        <code>$ mv text.txt text1.txt</code>
+    <h3>UNIX Command: schedule the execution of programs in the future</h3>
+        <code>$ SCHTASKS /CREATE /SC WEEKLY /D SUN /TN "FOLDERPATH\TASKNAME" /TR "C:\SOURCE\FOLDER\APP-OR-SCRIPT" /ST HH:MM</code>
+    <h3>UNIX Command: Forcefully shutdown the command with process ID123</h3>
+        <code>$ sudo kill 123</code>
+    <h3>UNIX Command: access your root user</h3>
+        <code> $ su 
+        Password: ********
+        
+        $ su - {user-name}
+        Password: ********
+        </code>
+    <h3>Crontab scheduled: At minute 30 on Sunday.</h3>
+        <p>30 0 * * 6</p>
+    <h3>Crontab scheduled: At minute 30 on day-of-month 15.</h3>
+        <p>30 0 15 * *</p>
+    <h3>Crontab scheduled: At 05:30 on every day-of-week from Sunday through Monday in June.</h3>
+        <p>30 5 * Jun 7/1</p>
+    <h3>Script: print your name date</h3>
+        <code>
+            #!/bin/bash
+            read -p "Please enter name: " name
+            echo "Your name: "  $name  "  Date: " $(date)
+        </code>
+    <h3>Script: add two numeric values, print the result</h3>
+        <code>
+            read -p "First number: " num1
+            read -p "Second number: " num2
+            echo "Total: " $((num1+num2))
+        </code>
+    <h3>Script: inputs username, prinnts "USERNAME stored"</h3>
+        <code>
+            echo "What is your name? "
+            read MY_NAME
+            echo  "$MY_NAME stored"
+        </code>
+    <h3>Script: Store the output of the command "hostname" in a variable. Display "This script is running on _." where "_" is the output of the "hostname" command.</h3>
+        <code>
+            #!/bin/bash
+            Kalkun=$(hostname)
+            echo "This script is running on" $Kalkun 
+        </code>
+    <h3>Script: Store the output of the working directory (from where the script is run) in a variable then print the variable</h3>
+        <code>
+            kalkun=$(pwd)
+            echo $kalkun
+        </code>
+    <h3>Create a step by step tutorial on how to create a cronjob that prints “Task scheduled at” +
+        DATE. Cronjob is scheduled every 30 minutes on today’s date (only today).</h3>
+        <ol>
+            <li>First we create a sample.txt document (name is optional)</li>
+            <li>now lets create crontask.sh</li>
+                <ol>
+                    <code>
+                        #!/bin/bash
+                        echo "Task scheduled at:" $(date)
+
+                        crondate=$(date +%d%m%y%h%m)
+                        enddate= 271120202359
+                        if [ $(crondate) -gt $(enddate) ]
+                        then $(service crond stop)
+                        fi
+                    </code>
+                </ol>
+            <li>Now lets create a cronjob: Type crontab -e</li>
+            <li>to set a time for the cronjob we will have to set it up with 5 different variables</li>
+                <ol>
+                    <li>Minute (0 - 59)</li>
+                    <li>Hour (0 - 23)</li>
+                    <li>Day of the month (1 - 31)</li>
+                    <li>Month (1 - 12)</li>
+                    <li>Day of the week (0 - 6( Sunday to saturday; 7 is also on Sunday on some systems))</li>
+                </ol>
+            <li>Now lets enter our file path for out script exectution and our .txt document</li>
+                <ol>
+                    <code>/home/user/crontask.sh >> /home/user/sample.txt</code>
+                </ol>
+            <li>The full code should look something like this</li>
+             <ol>
+                 <code> */30 * * * *    /home/user/crontask.sh >> /home/user/sample.txt</code>
+             </ol>
+            <li>now type "cat sample.txt" and see the results</li>
+        </ol>
+    <h3>Create a script that takes an input (letter or number) that will display the answer of a question.
+        The script should when started list a menu for the user with the different questions that can be
+        chosen and which corresponding letter the user will have to give as input to display the answer of
+        the desired question. One of the possible inputs the user should be able to make is "q" for quitting
+        the script. The menu should also have a default case where all the items is displayed again, or no
+        changes is made if the user gives an invalid input. Hint: use a switch case to be able to handle the
+        menu. Each option in the menu should lead to an echo of the answer</h3>
+        <code>
+            #!/bin/bash
+
+            echo "How old am i? Press 1 for answer "
+            echo "What was my first coding language? Press 2 for answer "
+            echo "What games do i like to play? Press 3 for answer "
+
+            read -p "pleas enter number here?" number
+            while true; do
+            if [ $number -eq 1 ] 
+            then
+	            echo "21 years old"
+            elif [ $number -eq 2 ] 
+            then 
+	            echo "Java"
+            elif [ $number -eq 3 ] 
+            then 
+	            echo "Path of exile"
+            elif [ $number -eq q ]
+            then $kill
+            else
+	            echo "How old am i? Press 1 for answer"
+	            echo "What was my first coding language? Press 2 for answer"
+	            echo "what games do i like to play? Press 3 for answer"
+	            read -p "pleas enter number here?" number
+	            continue
+            fi
+            break
+            done
+        </code>
+</div>
+</body>
+</html>
